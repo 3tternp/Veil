@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-"""
-"""
-
 import argparse
 import sys
 from lib.common import helpers
@@ -10,14 +7,9 @@ from lib.common import messages
 from lib.common import orchestra
 sys.dont_write_bytecode = True
 
-
-if __name__ == "__main__":
-    import os
-    os.chdir(os.path.dirname(os.path.realpath(__file__)))
-
+def main():
     parser = argparse.ArgumentParser(
-        add_help=False, description="Veil is a framework containing multiple\
-         tools.")
+        add_help=False, description="Veil is a framework containing multiple tools.")
     parser.add_argument(
         '-h', '-?', '--h', '-help', '--help', action="store_true",
         help=argparse.SUPPRESS)
@@ -140,3 +132,6 @@ if __name__ == "__main__":
     # This should hit if trying to use the CLI
     else:
         the_conductor.command_line_use()
+
+if __name__ == "__main__":
+    main()
