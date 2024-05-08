@@ -16,52 +16,52 @@ try:
     sys.path.append("/etc/veil/")
     import settings
 except ImportError:
-    print( "\n [!] ERROR #1-3: Can't import /etc/veil/settings.py.   Run: %s\n" % ( os.path.abspath( "./config/update-config.py" ) ) )
+    print(f"\n [!] ERROR #1-3: Can't import /etc/veil/settings.py.   Run: {os.path.abspath('./config/update-config.py')}\n")
     sys.exit()
 
 # See if ./config/setup.sh has been executed
-if not os.path.exists( settings.GOLANG_PATH ):
-    print( "\n [!] ERROR #2-3: Can't find Go (%s).   Run: %s --force --silent\n" % ( settings.GOLANG_PATH, os.path.abspath( "./config/setup.sh" ) ) )
+if not os.path.exists(settings.GOLANG_PATH):
+    print(f"\n [!] ERROR #2-3: Can't find Go ({settings.GOLANG_PATH}).   Run: {os.path.abspath('./config/setup.sh')} --force --silent\n")
     sys.exit()
 
-if not os.path.exists( settings.PYINSTALLER_PATH ):
-    print( "\n [!] ERROR #2-3: Can't find PyInstaller (%s).   Run: %s --force --silent\n" % ( settings.PYINSTALLER_PATH, os.path.abspath( "./config/setup.sh" ) ) )
+if not os.path.exists(settings.PYINSTALLER_PATH):
+    print(f"\n [!] ERROR #2-3: Can't find PyInstaller ({settings.PYINSTALLER_PATH}).   Run: {os.path.abspath('./config/setup.sh')} --force --silent\n")
     sys.exit()
 
-if not os.path.exists( settings.METASPLOIT_PATH ):
-    print( "\n [!] ERROR #2-3: Can't find the Metasploit Framework (%s).   Run: %s --force --silent\n" % ( settings.METASPLOIT_PATH, os.path.abspath( "./config/setup.sh" ) ) )
+if not os.path.exists(settings.METASPLOIT_PATH):
+    print(f"\n [!] ERROR #2-3: Can't find the Metasploit Framework ({settings.METASPLOIT_PATH}).   Run: {os.path.abspath('./config/setup.sh')} --force --silent\n")
     sys.exit()
 
-if not os.path.exists( settings.WINEPREFIX ):
-    print( "\n [!] ERROR #2-3: Can't find the WINE profile (%s).   Run: %s --force --silent\n" % ( settings.WINEPREFIX, os.path.abspath( "./config/setup.sh" ) ) )
+if not os.path.exists(settings.WINEPREFIX):
+    print(f"\n [!] ERROR #2-3: Can't find the WINE profile ({settings.WINEPREFIX}).   Run: {os.path.abspath('./config/setup.sh')} --force --silent\n")
     sys.exit()
 
-if not os.path.exists( settings.WINEPREFIX + "/drive_c/Python34/python.exe" ):
-    print( "\n [!] ERROR #2-3: Can't find the WINE profile for Python v3.4 (%s).   Run: %s --force --silent\n" % ( settings.WINEPREFIX + "/drive_c/Python34/python.exe", os.path.abspath( "./config/setup.sh" ) ) )
+if not os.path.exists(settings.WINEPREFIX + "/drive_c/Python34/python.exe"):
+    print(f"\n [!] ERROR #2-3: Can't find the WINE profile for Python v3.4 ({settings.WINEPREFIX + '/drive_c/Python34/python.exe'}).   Run: {os.path.abspath('./config/setup.sh')} --force --silent\n")
     sys.exit()
 
-if not os.path.exists( settings.WINEPREFIX + "/drive_c/Ruby187/bin/ruby.exe" ):
-    print( "\n [!] ERROR #2-3: Can't find the WINE profile for Ruby v1.8.7 (%s).   Run: %s --force --silent\n" % ( settings.WINEPREFIX + "/drive_c/Ruby187/bin/ruby.exe", os.path.abspath( "./config/setup.sh" ) ) )
+if not os.path.exists(settings.WINEPREFIX + "/drive_c/Ruby187/bin/ruby.exe"):
+    print(f"\n [!] ERROR #2-3: Can't find the WINE profile for Ruby v1.8.7 ({settings.WINEPREFIX + '/drive_c/Ruby187/bin/ruby.exe'}).   Run: {os.path.abspath('./config/setup.sh')} --force --silent\n")
     sys.exit()
 
-if not os.path.exists( settings.WINEPREFIX + "/drive_c/Program Files/AutoIt3/Aut2Exe/Aut2exe.exe" ):
-    print( "\n [!] ERROR #2-3: Can't find the WINE profile for AuotIT v3 (%s).   Run: %s --force --silent\n" % ( settings.WINEPREFIX + "/drive_c/Program Files/AutoIt3/Aut2Exe/Aut2exe.exe", os.path.abspath( "./config/setup.sh" ) ) )
+if not os.path.exists(settings.WINEPREFIX + "/drive_c/Program Files/AutoIt3/Aut2Exe/Aut2exe.exe"):
+    print(f"\n [!] ERROR #2-3: Can't find the WINE profile for AuotIT v3 ({settings.WINEPREFIX + '/drive_c/Program Files/AutoIt3/Aut2Exe/Aut2exe.exe'}).   Run: {os.path.abspath('./config/setup.sh')} --force --silent\n")
     sys.exit()
 
 
 def clean_payloads():
-    print("\n [*] Cleaning %s" % (settings.PAYLOAD_SOURCE_PATH))
-    os.system('rm -f %s/*.*' % (settings.PAYLOAD_SOURCE_PATH))
+    print(f"\n [*] Cleaning {settings.PAYLOAD_SOURCE_PATH}")
+    os.system(f'rm -f {settings.PAYLOAD_SOURCE_PATH}/*.*')
 
-    print(" [*] Cleaning %s" % (settings.PAYLOAD_COMPILED_PATH))
-    os.system('rm -f %s/*.exe' % (settings.PAYLOAD_COMPILED_PATH))
+    print(f" [*] Cleaning {settings.PAYLOAD_COMPILED_PATH}")
+    os.system(f'rm -f {settings.PAYLOAD_COMPILED_PATH}/*.exe')
 
-    print(" [*] Cleaning %s" % (settings.HANDLER_PATH))
-    os.system('rm -f %s/*.rc' % (settings.HANDLER_PATH))
+    print(f" [*] Cleaning {settings.HANDLER_PATH}")
+    os.system(f'rm -f {settings.HANDLER_PATH}/*.rc')
 
-    print(" [*] Cleaning %s" % (settings.HASH_LIST))
-    os.system('rm -f %s' % (settings.HASH_LIST))
-    os.system('touch ' + settings.HASH_LIST)
+    print(f" [*] Cleaning {settings.HASH_LIST}")
+    os.system(f'rm -f {settings.HASH_LIST}')
+    os.system(f'touch {settings.HASH_LIST}')
 
     print(" [*] Cleaning ./tools/vt-notify/results.log")
     os.system('rm -f ./tools/vt-notify/results.log')
