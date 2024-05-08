@@ -11,7 +11,7 @@ try:
     sys.path.append("/etc/veil/")
     import settings
 except ImportError:
-    print( "\n [!] ERROR #1-8: Can't import /etc/veil/settings.py.   Run: %s\n" % ( os.path.abspath( "./config/update-config.py" ) ) )
+    print(f"\n [!] ERROR #1-8: Can't import /etc/veil/settings.py.   Run: {os.path.abspath('./config/update-config.py')}\n")
     sys.exit()
 
 # Current version of Veil
@@ -26,7 +26,7 @@ def title_screen():
         os.system('clear')
 
     print('=' * 79)
-    print(' ' * 29 + helpers.color('Veil', status=False, bold=True) + ' | [Version]: ' + veil_version)
+    print(f"{' ' * 29}{helpers.color('Veil', status=False, bold=True)} | [Version]: {veil_version}")
     print('=' * 79)
     print('      [Web]: https://www.veil-framework.com/ | [Twitter]: @VeilFramework')
     print('=' * 79 + '\n')
