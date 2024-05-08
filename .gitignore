@@ -1,13 +1,11 @@
-## Python Rubbish
+# Python Rubbish
 __pycache__/
 *.py[cod]
 
-
-## OSX Rubbish
+# OSX Rubbish
 .DS_Store
 
-
-## Windows Rubbish
+# Windows Rubbish
 [Dd]esktop.ini
 Thumbs.db
 ehthumbs.db
